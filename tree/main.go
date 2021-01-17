@@ -1,3 +1,4 @@
+//Package main implements a simply tree unix util.
 package main
 
 import (
@@ -29,11 +30,13 @@ func main() {
 	}
 }
 
+// dirTree handle params.
 func dirTree(out io.Writer, path string, printFiles bool) error {
+	// TODO add more params and handle them
 	return showTree(out, path, printFiles, "")
 }
 
-// recursive traversal tree
+// showTree will do recursive traversal tree.
 func showTree(out io.Writer, path string, printFiles bool, prefix string) error {
 	files, err := ioutil.ReadDir(path)
 	var lastElem int
@@ -67,7 +70,7 @@ func showTree(out io.Writer, path string, printFiles bool, prefix string) error 
 	return err
 }
 
-// Print file or directory
+// printFile prints file or directory.
 func printFile(out io.Writer, f os.FileInfo, prefix string, IsLastElem bool) {
 	if IsLastElem {
 		prefix += LASTELEM
